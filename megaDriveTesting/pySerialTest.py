@@ -13,8 +13,6 @@ ser = serial.Serial('COM4', 9600)
 name = ser.name
 print "Now listening on %s for serial data" % name
 
-print upFlag
-
 while True:
 	readByte = ord(ser.read())
 	if readByte == upFlag:
