@@ -15,6 +15,8 @@ int bFlag = 32;
 int cFlag = 64;
 int startFlag = 128;
 
+bool written = false;
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -29,22 +31,27 @@ void setup() {
 
 void loop() {
   // first poll the buttons with Select=GND
+  written = false;
   digitalWrite(selectPin, LOW);
   if(digitalRead(upPin) == LOW)
   {
     Serial.write(upFlag);
+    written = true;
   }
-  if(digitalRead(downPin) == LOW)
+  else if(digitalRead(downPin) == LOW)
   {
     Serial.write(downFlag);
+    written = true;
   }
   if(digitalRead(aBPin) == LOW)
   {
     Serial.write(aFlag);
+    written = true;
   }
   if(digitalRead(startCPin) == LOW)
   {
     Serial.write(startFlag);
+    written = true;
   }
   
   // now poll the buttons with Select=+5V
@@ -52,17 +59,26 @@ void loop() {
   if(digitalRead(leftPin) == LOW)
   {
     Serial.write(leftFlag);
+    written = true;
   }
-  if(digitalRead(rightPin) == LOW)
+  else if(digitalRead(rightPin) == LOW)
   {
     Serial.write(rightFlag);
+    written = true;
   }
   if(digitalRead(aBPin) == LOW)
   {
     Serial.write(bFlag);
+    written = true;
   }
   if(digitalRead(startCPin) == LOW)
   {
     Serial.write(cFlag);
+    written = true;
+  }
+  
+  if (!written)
+  {
+    Serial.write(0);
   }
 }
