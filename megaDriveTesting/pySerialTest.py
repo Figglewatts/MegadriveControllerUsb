@@ -1,4 +1,4 @@
 import serial
 
-ser = serial.Serial(0)
+ser = serial.Serial('COM4')
 print ser.name
