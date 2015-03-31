@@ -6,14 +6,14 @@ int leftPin = 9;
 int rightPin = 8;
 int startCPin = 7;
 
-byte upFlag = B00000001;
-byte downFlag = B00000010;
-byte leftFlag = B00000100;
-byte rightFlag = B00001000;
-byte aFlag = B00010000;
-byte bFlag = B00100000;
-byte cFlag = B01000000;
-byte startFlag = B10000000;
+int upFlag = 1;
+int downFlag = 2;
+int leftFlag = 4;
+int rightFlag = 8;
+int aFlag = 16;
+int bFlag = 32;
+int cFlag = 64;
+int startFlag = 128;
 
 void setup() {
   // put your setup code here, to run once:
